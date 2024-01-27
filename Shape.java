@@ -1,48 +1,45 @@
-import java.util.ArrayList;
+abstract class Shape {
+    abstract double calculateArea();
 
-public class Shape {
+    public static void main(String[] args) {
+        Rectangle rectangle = new Rectangle(5, 10);
+        double rectangleArea = rectangle.calculateArea();
+        System.out.println("Rectangle area: " + rectangleArea); // Output: Rectangle area: 50.0
 
-    void calculateArea(){
-        System.out.println("calA  is called");
-    }
+        Triangle triangle = new Triangle(3, 4);
+        double triangleArea = triangle.calculateArea();
+        System.out.println("Triangle area: " + triangleArea); // Output: Triangle area: 6.0
 
-    void displayArea(){
-        System.out.println("disA is called");
-    }
-
-    public static void main(String[] args){
-        ArrayList<Shape> list = new ArrayList<Shape>();
-        list.add(new Circle());
-        list.add(new Rectangle());
-        for (Shape shape:list){
-            shape.calculateArea();
-            shape.displayArea();
-        }
-    }
-
-}
-
-class Circle extends Shape{
-    int radius = 10;
-    double area;
-    void calculateArea(){
-        area = Math.PI*radius*radius;
-    }
-    void displayArea(){
-        System.out.println(area);
     }
 }
 
-class Rectangle extends Shape{
-    int length = 10;
-    int wide = 5;
-    double area;
-    void calculateArea() {
-        area = length*wide;
+class Rectangle extends Shape {
+    private final double width;
+    private final double height;
+
+    public Rectangle(double width, double height) {
+        this.width = width;
+        this.height = height;
     }
 
-    void displayArea(){
-        System.out.println(area);
+    @Override
+    public double calculateArea() {
+        return width * height;
+    }
+}
+
+class Triangle extends Shape {
+    private final double base;
+    private final double height;
+
+    public Triangle(double base, double height) {
+        this.base = base;
+        this.height = height;
+    }
+
+    @Override
+    public double calculateArea() {
+        return 0.5 * base * height;
     }
 }
 
