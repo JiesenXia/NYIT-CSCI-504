@@ -1,16 +1,22 @@
 public class Student {
-        String name;
-        int roll_no;
-    public static void main(String[] args) {
-        Student student = new Student();
-        student.name = "John";
-        student.roll_no = 2;
-        System.out.println("The student's name is " + student.name);
-        System.out.println("The roll_no is " + student.roll_no);
-
+    int stuNum;
+    static int insNum=0;
+    Student(){
+        insNum += 1;
+    }
+    Student(int a){
+        stuNum = a;
+        insNum += 1;
     }
 
-
-
-
+    static int value(){
+        return insNum;
+    }
+    public static void main(String[] args) {
+        Student student = new Student(10);
+        Student stu = new Student();
+        Student stu3 = new Student();
+        System.out.println("The student number is " + student.stuNum);
+        System.out.println("The number of instance created is " + value());
+    }
 }
